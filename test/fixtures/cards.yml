@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  inventory_id: 1
+  transaction_id: 1
+
+two:
+  inventory_id: 1
+  transaction_id: 1
