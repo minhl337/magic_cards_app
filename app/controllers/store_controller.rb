@@ -1,5 +1,4 @@
 class StoreController < ApplicationController
-<<<<<<< HEAD
     def home
         if current_customer
             @customer = Customer.find(current_customer)
@@ -29,6 +28,3 @@ class StoreController < ApplicationController
     end
     
 end
-=======
-
->>>>>>> front_end

@@ -9,12 +9,3 @@ class CreateCustomers < ActiveRecord::Migration[5.2]
     end
   end
 end
-
-
-salt
-
-password.translate = hash
-
-sale + hash 
-
-userauthenticate
