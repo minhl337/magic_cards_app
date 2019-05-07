@@ -1,14 +1,30 @@
-<% if @customer %>
-    <h1>Welcome to store <%= @customer.username %></h1>
-    <%= button_to "LOG OUT", logout_path %>
-<% else %>
-    <h1>Welcome to store</h1>
-    <%= link_to '<button type="button">LOG IN</button>'.html_safe, store_login_path %>
-<% end %>
 
-<% @cards.each do |card| %>
-    <h1>Picture</h1>
-    <h3><%= card.name %>, Quantity: <%= card.quantity %></h3>
-<% end %>
+<header class="jumbotron">
+       <div class="container">
+    <h1>Welcome to Magic Mountain</h1>
+    <p>Your Magic: The Gathering headquarters.</p>
+    <p>
+        <!--<a class="btn btn-primary btn-lg" href="/campgrounds/new">Create New Trade</a>-->
+    </p>
+    </div>
+</header>
 
 
+<div class="container">
+<div class="row text-center" style="display:flex; flex-wrap:wrap;">
+
+<% @cards.each do |c| %>
+    <div class="col-md-4 col-sm-6 mx-0">
+        <div class="thumbnail">
+                <img src="<%=c.pic_url %>" >
+                <div class="caption">
+                    <h4><%= c.name %></h4> 
+                </div>
+                <p>
+                    <a href="/cards/<%=c.id%>" class="btn btn-primary">More Info</a>
+                </p>
+        </div>
+    </div>
+<% end %> 
+</div>
+</div>
