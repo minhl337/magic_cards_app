@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2019_05_06_193536) do
 
   create_table "customers", force: :cascade do |t|
     t.string "username"
-    t.integer "password_digest"
+    t.string "password_digest"
     t.integer "store_id", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

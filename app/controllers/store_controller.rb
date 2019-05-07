@@ -7,13 +7,12 @@ class StoreController < ApplicationController
     end
 
     def login 
-        @customer = Customer.new
         render 'loggin'
     end
 
     def check_login
-        @customer = Customer.find_by(username: params[:customer][:username])
-        @customer = @customer.try(:authenticate, params[:user][:password])
+        @customer = Customer.find_by(username: params[:username])
+        @customer = @customer.try(:authenticate, params[:password])
         if @customer
             session[:user_id] = @customer.id
             redirect_to root_path

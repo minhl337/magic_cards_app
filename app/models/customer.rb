@@ -8,6 +8,10 @@ class Customer < ApplicationRecord
 
     has_secure_password
 
+    validates :username, presence: true
+    validates :username, uniqueness: true
+    validates :username, length: { in: 8..15}
+
     def shopping_cart_items
         
     end
