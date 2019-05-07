@@ -1,7 +1,7 @@
 class ShoppingCartsController < ApplicationController
 
     def show 
-        @shopping_cart = ShoppingCart.find(params[:id])
+        @shopping_cart = current_customer.shopping_cart
     end
 
 end

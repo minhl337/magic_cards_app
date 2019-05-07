@@ -19,6 +19,7 @@ class StoreController < ApplicationController
         @customer = @customer.try(:authenticate, params[:password])
         if @customer
             session[:user_id] = @customer.id
+            # session[:shopping_cart_id] = @customer.shopping_cart.id
             redirect_to root_path
         else
             redirect_to store_login_path
@@ -27,6 +28,7 @@ class StoreController < ApplicationController
 
     def logout
         session.delete(:user_id)
+        # session.delete(:shopping_cart_id)
         redirect_to root_path
     end
 end

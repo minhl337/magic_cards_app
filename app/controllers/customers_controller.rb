@@ -16,6 +16,7 @@ class CustomersController < ApplicationController
         @customer = Customer.new(customer_attributes_hash)
         if @customer.save
             session[:user_id] = @customer.id
+            # session[:shopping_cart_id] = @customer.shopping_cart.id
             redirect_to root_path
         else 
             flash[:error] = @customer.errors.full_messages

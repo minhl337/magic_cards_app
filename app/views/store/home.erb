@@ -1,3 +1,9 @@
+<% if @customer %>
+    <%= link_to '<button type="button">Check Cart</button>'.html_safe, shopping_cart_path(@customer.shopping_cart) %>
+<% else %>
+    <%= link_to '<button type="button">Check Cart</button>'.html_safe, store_login_path %>
+<% end %>
+
 
 <header class="jumbotron">
        <div class="container">
@@ -28,3 +34,4 @@
 <% end %> 
 </div>
 </div>
+
