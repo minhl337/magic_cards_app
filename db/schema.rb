@@ -14,8 +14,11 @@ ActiveRecord::Schema.define(version: 2019_05_06_193536) do
 
   create_table "cards", force: :cascade do |t|
     t.string "name"
-    t.integer "quantity", default: 0
-    t.integer "shopping_cart_id"
+    t.string "set_name"
+    t.string "collector_number"
+    t.string "pic_url"
+    t.string "price"
+    t.integer "quantity", default: 100
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -28,7 +31,8 @@ ActiveRecord::Schema.define(version: 2019_05_06_193536) do
   end
 
   create_table "customers", force: :cascade do |t|
-    t.string "name"
+    t.string "username"
+    t.integer "password_digest"
     t.integer "store_id", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

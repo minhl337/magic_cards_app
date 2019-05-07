@@ -1,0 +1,6 @@
+<h1>Shopping Cart</h1>
+
+<% @shopping_cart.uniq_cards_quantity_hash.each do |card, quantity| %>
+    <h1>Name: <%= card.name %>, Quantity: <%= quantity %></h1>
+<% end %>
+

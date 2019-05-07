@@ -6,6 +6,8 @@ class Customer < ApplicationRecord
      
     belongs_to :store
 
+    has_secure_password
+
     def shopping_cart_items
         
     end

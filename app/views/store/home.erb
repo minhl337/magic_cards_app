@@ -1,0 +1,14 @@
+<% if @customer %>
+    <h1>Welcome to store <%= @customer.username %></h1>
+    <%= button_to "LOG OUT", logout_path %>
+<% else %>
+    <h1>Welcome to store</h1>
+    <%= link_to '<button type="button">LOG IN</button>'.html_safe, store_login_path %>
+<% end %>
+
+<% @cards.each do |card| %>
+    <h1>Picture</h1>
+    <h3><%= card.name %>, Quantity: <%= card.quantity %></h3>
+<% end %>
+
+
