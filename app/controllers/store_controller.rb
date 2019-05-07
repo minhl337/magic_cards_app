@@ -1,7 +1,10 @@
 class StoreController < ApplicationController
+
+    skip_before_action :authenticated?
+    
     def home
         if current_customer
-            @customer = Customer.find(current_customer)
+            @customer = current_customer
         end
         @cards = Card.all
     end

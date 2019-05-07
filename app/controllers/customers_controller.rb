@@ -1,5 +1,7 @@
 class CustomersController < ApplicationController
 
+    skip_before_action :authenticated?, only: [:new, :create, :customer_params]
+
     def show
 
     end
@@ -17,7 +19,8 @@ class CustomersController < ApplicationController
             redirect_to new_customer_path
         end
     end
-
+    
+    private
     def customer_params
         params.require(:customer).permit(:username, :password, :password_confirmation)
     end
