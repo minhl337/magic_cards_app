@@ -11,6 +11,7 @@ class Customer < ApplicationRecord
     validates :username, presence: true
     validates :username, uniqueness: true
     validates :username, length: { in: 8..15}
+    validates :password, length: { in: 8..15}
 
     def shopping_cart_items
         

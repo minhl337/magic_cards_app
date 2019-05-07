@@ -1,7 +1,7 @@
 class StoreController < ApplicationController
 
     skip_before_action :authenticated?
-    
+
     def home
         if current_customer
             @customer = current_customer
@@ -28,5 +28,4 @@ class StoreController < ApplicationController
         session.delete(:user_id)
         redirect_to root_path
     end
-    
 end
