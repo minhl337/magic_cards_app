@@ -14,6 +14,7 @@ class StoreController < ApplicationController
     end
 
     def check_login
+        
         @customer = Customer.find_by(username: params[:username])
         @customer = @customer.try(:authenticate, params[:password])
         if @customer

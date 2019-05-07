@@ -21,7 +21,15 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="/cards">Link</a>
+
+        
+        <% if @customer %>
+    
+    <%= button_to "LOG OUT", logout_path %>
+<% else %>
+
+    <%= link_to '<button type="button">LOG IN</button>'.html_safe, store_login_path %>
+<% end %>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
