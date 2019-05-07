@@ -1,0 +1,31 @@
+<header class="jumbotron">
+       <div class="container">
+    <h1>Welcome to Magic Mountain</h1>
+    <p>Your Magic: The Gathering headquarters.</p>
+    <p>
+        <!--<a class="btn btn-primary btn-lg" href="/campgrounds/new">Create New Trade</a>-->
+    </p>
+    </div>
+</header>
+
+
+<div class="container">
+<div class="row text-center" style="display:flex; flex-wrap:wrap;">
+
+<% @cards.each do |c| %>
+    <div class="col-md-4 col-sm-6 mx-0">
+        <div class="thumbnail">
+                <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/054.png" >
+                <div class="caption">
+                    <h4><%= c.name %></h4> 
+                </div>
+                <p>
+                    <a href="/cards/<%=c.id%>" class="btn btn-primary">More Info</a>
+                </p>
+        </div>
+    </div>
+<% end %> 
+</div>
+</div>
+
+
