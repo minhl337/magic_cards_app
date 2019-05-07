@@ -10,11 +10,10 @@ class CustomersController < ApplicationController
         if flash[:error]
             @error = flash[:error].first
         end
-        @customer = Customer.new
     end
 
     def create
-        @customer = Customer.new(customer_params)
+        @customer = Customer.new(customer_attributes_hash)
         if @customer.save
             session[:user_id] = @customer.id
             redirect_to root_path
@@ -25,6 +24,9 @@ class CustomersController < ApplicationController
     end
 
     private
+    def customer_attributes_hash
+        {username: params[:username], password: params[:password], password_confirmation: params[:password_confirmation]}
+    end
     def customer_params
         params.require(:customer).permit(:username, :password, :password_confirmation)
     end
