@@ -1,13 +1,26 @@
 
-<%= image_tag @card.normal_pic_url %>
-<h1>      Name: <%= @card.name %></h1>
-<h2>  Set Name: <%= @card.set_name %></h2>
-<h2>Set Number: <%= @card.collector_number %></h2>
-<h2>     Price: $<%= @card.price %></h2>
-<h2>     Stock: <%= @card.quantity %></h2>
-<%= form_tag "/cards/#{@card.id}/add_to_cart" do %>
-    <%= submit_tag 'Add To Cart' %>
+<div class="container">
+    
+
+  <div class="row">
+    <div class="col">
+      <img style="float:left" src="<%=@card.normal_pic_url%>"/>
+    </div>
+    <div class="col">
+      
+<h3 class="mb-0"><b>Name:</b> <%= @card.name %></h3><br>
+<h5><b>Set Name:</b> <%= @card.set_name %></h5><br>
+<h5><b>Set Number:</b> <%= @card.collector_number %></h5><br> <hr >
+<h5><b>Price:</b> $<%= @card.price %></h5><br>
+Stock: <%= @card.quantity %>
+
+
+<%= bootstrap_form_tag url: "/cards/#{@card.id}/add_to_cart" do |f| %>
+  <%= f.submit "Add to Cart"%>
 <% end %>
 
+    </div>
+  </div>
 
 
+</div>

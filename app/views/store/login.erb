@@ -1,11 +1,21 @@
-<h1>Sign in for faster checkout.</h1>
+
+
+
+    
+<div class="container col-md-6 col-sm-6 mx-auto">
+    
+    <h1>Welcome back</h1>
 <% if @alert %>
     <p><%= @alert %></p>
 <% end %>
-<%= form_tag('/store') do %>
-
-    <%= text_field_tag 'username', nil, placeholder: 'Username'%><br>
-    <%= password_field_tag 'password', nil, placeholder: 'Password'%><br>
-    <%= submit_tag "Log In" %><br>
+    
+<%= bootstrap_form_tag url: '/store' do |f| %>
+  <%= f.text_field :username, placeholder: 'Username'%>
+  <%= f.password_field :password, placeholder: 'Password' %>
+  <%= f.submit "Login"%>
+  Dont have an account with us? <a href="/customers/new">Create Account</a>
 <% end %>
-    <%= link_to '<button type="button">Create Account</button>'.html_safe, new_customer_path %><br>
+
+
+
+</div>

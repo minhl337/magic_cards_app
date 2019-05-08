@@ -1,10 +1,16 @@
+<div class="container col-md-6 col-sm-6 mx-auto">
+
+<h1>Create Account</h1>
+
 <p><%= @error %></p>
-<%= form_tag '/customers' do %>
-    <%= label_tag "Username" %>
-    <%= text_field_tag 'username' %><br>
-    <%= label_tag "Password" %>
-    <%= password_field_tag 'password'  %><br>
-    <%= label_tag "Password Confirmation" %>
-    <%= password_field_tag 'password_confirmation'  %><br>
-    <%= submit_tag "Create Account" %>
+
+<%= bootstrap_form_tag url: '/customers' do |f| %>
+  <%= f.text_field :username, placeholder: 'Username'%>
+  <%= f.password_field :password, placeholder: 'Password' %>
+  <%= f.password_field :password_confirmation, placeholder: 'Password Confirmation' %>
+  
+  <%= f.submit "Create Account"%>
 <% end %>
+
+
+</div>

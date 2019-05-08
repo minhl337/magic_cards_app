@@ -1,12 +1,76 @@
-<h1>Shopping Cart</h1>
-<h3>Total: <%= @shopping_cart.total_price %></h3>
-<% @shopping_cart.uniq_cards_quantity_hash.each do |card, quantity| %>
-    <%= image_tag card.small_pic_url %>
-    <h3>Name: <%= card.name %>, Quantity: <%= quantity %></h3>
+
+
+
+
+<div class="container">
     
-    <%= form_for @shopping_cart do |f| %>
+    <h1 class="mb-5">Shopping Cart</h1>
+
+
+
+  <div class="row">
+    <div class="col">
+<!---->
+        
+<div id="accordion">
+
+    
+<%x=1%>
+
+<% @shopping_cart.uniq_cards_quantity_hash.each do |card, quantity| %>    
+  <div class="card">
+    <div class="card-header" id=<%="heading#{x}"%>>
+        
+   <div class="row">     
+   <div class="col-10">     
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target=<%="#collapse#{x}"%> aria-expanded="false" aria-controls=<%="collapse#{x}"%>>
+<h3><%= card.name %></h3>
+        </button>
+      </h5>
+    </div>  
+    
+    <div class="col-2">
+      <div class="mr-0">
+          <%= form_for @shopping_cart do |f| %>
         <%= hidden_field_tag 'card_id', card.id%>
         <%= select_tag :quantity, options_for_select(0..card.quantity), value: quantity, onchange: 'this.form.submit();', prompt: "#{quantity}" %>
     <% end %>
-<% end %>
+</div>
+      </div>
+      
+      
+    </div>  
+      
+    </div>
 
+    <div id=<%="collapse#{x}"%> class="collapse" aria-labelledby=<%="heading#{x}"%> data-parent="#accordion">
+      <div class="card-body">
+          
+          <%= image_tag card.small_pic_url %>
+          
+      </div>
+    </div>
+  </div>
+  
+<%x += 1%>
+<% end %>  
+  
+
+  
+  
+  
+  
+</div>        
+        
+<!---->
+    </div> 
+    <div class="col-md-auto" >
+        
+<h3 style="position:fixed">Total: $<%= @shopping_cart.total_price %></h3>
+
+    </div>
+    <div class="col col-lg-2">
+    </div>
+  </div>
+</div
