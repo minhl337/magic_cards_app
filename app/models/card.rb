@@ -24,8 +24,4 @@ class Card < ApplicationRecord
             Card.all
         end
     end
-
-    def add_to_cart(id)
-        CardsShoppingCart.create(card_id: self.id, shopping_cart_id: id)
-    end
 end

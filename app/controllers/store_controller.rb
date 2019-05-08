@@ -11,7 +11,8 @@ class StoreController < ApplicationController
     end
 
     def login 
-        render 'loggin'
+        redirect_to root_path if login?
+        @alert = flash[:alert] if flash[:alert]
     end
 
     def check_login
@@ -22,6 +23,7 @@ class StoreController < ApplicationController
             session[:user_id] = @customer.id
             redirect_to root_path
         else
+            flash[:alert] = 'Username or Password is incorrect'
             redirect_to store_login_path
         end
     end

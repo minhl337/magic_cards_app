@@ -1,0 +1,11 @@
+<h1>Sign in for faster checkout.</h1>
+<% if @alert %>
+    <p><%= @alert %></p>
+<% end %>
+<%= form_tag('/store') do %>
+
+    <%= text_field_tag 'username', nil, placeholder: 'Username'%><br>
+    <%= password_field_tag 'password', nil, placeholder: 'Password'%><br>
+    <%= submit_tag "Log In" %><br>
+<% end %>
+    <%= link_to '<button type="button">Create Account</button>'.html_safe, new_customer_path %><br>

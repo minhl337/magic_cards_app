@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   post 'store/logout', to: 'store#logout', as: 'logout'
   post 'store', to: 'store#check_login'
   resources :cards, only: [:show]
-  resources :shopping_carts
+  resources :shopping_carts, only: [:show, :update]
   resources :customers, only: [:new, :create]
+
+  post 'cards/:id/add_to_cart', to: 'cards#add_to_cart'
 end
