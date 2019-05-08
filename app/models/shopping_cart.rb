@@ -20,7 +20,17 @@ class ShoppingCart < ApplicationRecord
         end
     end
 
-    def puts_in_cart(id)
-        CardsShoppingCart.create(shopping_cart_id: self.id, card_id: id)
+    def total_price
+        self.cards.map {|card| card.price.to_f}.sum.floor(2)
+    end
+
+    def change_card_quantity(card_id, quantity)
+        join_class_arr = CardsShoppingCart.where("card_id = ? and shopping_cart_id = ?", card_id, self.id)
+        join_class_arr.each do |join_class|
+            join_class.destroy
+        end
+        quantity.times do 
+            CardsShoppingCart.create(card_id: card_id, shopping_cart_id: self.id)
+        end
     end
 end

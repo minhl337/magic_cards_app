@@ -1,6 +1,12 @@
 <h1>Shopping Cart</h1>
-
+<h3>Total: <%= @shopping_cart.total_price %></h3>
 <% @shopping_cart.uniq_cards_quantity_hash.each do |card, quantity| %>
-    <h1>Name: <%= card.name %>, Quantity: <%= quantity %></h1>
+    <%= image_tag card.small_pic_url %>
+    <h3>Name: <%= card.name %>, Quantity: <%= quantity %></h3>
+    
+    <%= form_for @shopping_cart do |f| %>
+        <%= hidden_field_tag 'card_id', card.id%>
+        <%= select_tag :quantity, options_for_select(0..card.quantity), value: quantity, onchange: 'this.form.submit();', prompt: "#{quantity}" %>
+    <% end %>
 <% end %>
 

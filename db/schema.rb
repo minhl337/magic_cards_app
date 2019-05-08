@@ -16,7 +16,8 @@ ActiveRecord::Schema.define(version: 2019_05_06_193536) do
     t.string "name"
     t.string "set_name"
     t.string "collector_number"
-    t.string "pic_url"
+    t.string "small_pic_url"
+    t.string "normal_pic_url"
     t.string "price"
     t.integer "quantity", default: 100
     t.datetime "created_at", null: false

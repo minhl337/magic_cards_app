@@ -14,7 +14,8 @@ cards_hash.each do |card|
         name: card['name'],
         set_name: card['set_name'],
         collector_number: card['collector_number'],
-        pic_url: card['image_uris']['normal'],
+        small_pic_url: card['image_uris']['small'],
+        normal_pic_url: card['image_uris']['normal'],
         price: card['usd']
     )
 end
