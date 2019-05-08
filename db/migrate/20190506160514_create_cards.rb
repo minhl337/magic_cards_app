@@ -4,7 +4,8 @@ class CreateCards < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :set_name
       t.string :collector_number
-      t.string :pic_url
+      t.string :small_pic_url
+      t.string :normal_pic_url
       t.string :price
       t.integer :quantity, :default => 100
 
