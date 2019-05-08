@@ -30,8 +30,7 @@ class StoreController < ApplicationController
         session.delete(:user_id)
         redirect_to root_path
     end
-<<<<<<< HEAD
-=======
+
     
     private
     
@@ -39,5 +38,4 @@ class StoreController < ApplicationController
         params.require(:store).permit(:search)
     end
     
->>>>>>> search_bar
 end
