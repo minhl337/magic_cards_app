@@ -21,7 +21,7 @@ class ShoppingCart < ApplicationRecord
     end
 
     def total_price
-        self.cards.map {|card| card.price.to_f}.sum
+        self.cards.map {|card| card.price.to_f}.sum.floor(2)
     end
 
     def change_card_quantity(card_id, quantity)
