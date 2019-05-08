@@ -11,7 +11,7 @@
 
   <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
   <div class="container">
   <a class="navbar-brand" href="/">Magic Moutain</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,32 +20,61 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+      
+            <% if @customer %>
+      <li class="nav-item">
+        <a class="nav-link disabled text-primary " href="#" tabindex="-1" aria-disabled="true"><%= @customer.username%></a>
+      </li>
+      <% end %>
+      
+      
       <li class="nav-item active">
-
-
-        
         <% if @customer %>
  
-    <%= bootstrap_form_tag url: '/store/logout' do |f| %>
+        <%= bootstrap_form_tag url: '/store/logout' do |f| %>
 
-  <%= f.submit "logout" %>
-<% end %>
-  
+          <%= f.submit "logout" %>
+        <% end %>
+
+        <% else %>
+          <li class="nav-item ">
+                    
+        <form action="/store/login" class="form-inline my-2 my-lg-0" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
+          <input type="submit"  class="btn btn-secondary" name="commit" value="Login" data-disable-with="Login">
+        </form> 
+          </li>
+          
+ 
+
+        
+        
     
+        <% end %>
+      </li>
+      
+      
+      
+      
+    </ul>
 
-  
-<% else %>
+    <ul class="nav navbar-nav navbar-right navbar-dark bg-dark">
+      <li>
+        <% if @customer %>
+        <a class="nav-link" href="/shopping_carts/1">Check Cart</a>
+          <% else %>
+        <a class="nav-link" href="/store/login">Check Cart</a>          
+        <% end %>
+      </li>
+      
       <li class="nav-item">
-        <a class="nav-link" href="store/login">Login</a>
+        <% if @customer %>
+        <span class="badge badge-light"><%= @customer.shopping_cart.cards.count%></span>
+        <% end %>
       </li>
-    
-<% end %>
-
-
-
-      </li>
-
-
+  
+      
+      
+      
     </ul>
   </div>
   </div>

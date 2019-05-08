@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 <%= image_tag @card.normal_pic_url %>
 <h1>      Name: <%= @card.name %></h1>
 <h2>  Set Name: <%= @card.set_name %></h2>
@@ -10,9 +11,35 @@
     <%= select_tag :quantity, options_for_select(0..@card.quantity), prompt: "Select quntity" %>
     <%= submit_tag 'Add to cart' %>
     <%= submit_tag 'Check out now' %>
+=======
+<div class="container">
+    
+
+  <div class="row">
+    <div class="col">
+      <img style="float:left" src="<%=@card.normal_pic_url%>"/>
+    </div>
+    <div class="col">
+      
+<h3 class="mb-0"><b>Name:</b> <%= @card.name %></h3><br>
+<h5><b>Set Name:</b> <%= @card.set_name %></h5><br>
+<h5><b>Set Number:</b> <%= @card.collector_number %></h5><br> <hr >
+<h5><b>Price:</b> $<%= @card.price %></h5><br>
+Stock: <%= @card.quantity %>
+
+
+<%= bootstrap_form_tag url: "/cards/#{@card.id}/add_to_cart" do |f| %>
+  <%= f.submit "Add to Cart"%>
+>>>>>>> shopping_cart_navbar
 <% end %>
 
+    </div>
+  </div>
 
 
+<<<<<<< HEAD
 
 
+=======
+</div>
+>>>>>>> shopping_cart_navbar
