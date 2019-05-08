@@ -3,6 +3,8 @@ class ShoppingCart < ApplicationRecord
     belongs_to :customer
     has_and_belongs_to_many :cards
 
+
+    #{card: quantity} hash in cart
     def uniq_cards_quantity_hash
         hash = {}
         self.cards.each do |card|

@@ -3,6 +3,7 @@ class Customer < ApplicationRecord
 
     has_many :purchases
     has_many :cards, through: :purchases
+    has_many :trades, through: :purchases
     has_one :shopping_cart
     belongs_to :store
 
@@ -16,8 +17,9 @@ class Customer < ApplicationRecord
     validates :username, length: { in: 8..15}
     validates :password, length: { in: 8..15}
 
-    def shopping_cart_items
-        
+    #return uniq trades array
+    def transactions
+        self.trades.uniq
     end
 
     private

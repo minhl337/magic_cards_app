@@ -9,4 +9,9 @@
         <%= select_tag :quantity, options_for_select(0..card.quantity), value: quantity, onchange: 'this.form.submit();', prompt: "#{quantity}" %>
     <% end %>
 <% end %>
+    
+    <%= form_tag({:controller => "purchases", :action => "shipping"}, :method => "get") do %>
+        <%= submit_tag "CHECK OUT" %>
+    <% end %>
+
 
