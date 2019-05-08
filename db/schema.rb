@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_06_193536) do
+ActiveRecord::Schema.define(version: 2019_05_08_200944) do
 
   create_table "cards", force: :cascade do |t|
     t.string "name"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2019_05_06_193536) do
   create_table "purchases", force: :cascade do |t|
     t.integer "card_id"
     t.integer "customer_id"
+    t.integer "trade_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -54,6 +55,11 @@ ActiveRecord::Schema.define(version: 2019_05_06_193536) do
 
   create_table "stores", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "trades", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

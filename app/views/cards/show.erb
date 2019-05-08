@@ -5,9 +5,14 @@
 <h2>Set Number: <%= @card.collector_number %></h2>
 <h2>     Price: $<%= @card.price %></h2>
 <h2>     Stock: <%= @card.quantity %></h2>
+
 <%= form_tag "/cards/#{@card.id}/add_to_cart" do %>
-    <%= submit_tag 'Add To Cart' %>
+    <%= select_tag :quantity, options_for_select(0..@card.quantity), prompt: "Select quntity" %>
+    <%= submit_tag 'Add to cart' %>
+    <%= submit_tag 'Check out now' %>
 <% end %>
+
+
 
 
 

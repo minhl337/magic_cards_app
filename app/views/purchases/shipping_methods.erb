@@ -1,0 +1,11 @@
+<h1>Choose A Shipping Method</h1>
+
+<%= form_tag 'set_shipping_method' do %>
+    <%= label_tag "Standard, FREE" %>
+    <%= radio_button_tag 'shipping_method', 0 %><br>
+    <%= label_tag "Two Day,  $15.00" %>
+    <%= radio_button_tag 'shipping_method', 15 %><br>
+    <%= label_tag "Next Day, $25.00" %>
+    <%= radio_button_tag 'shipping_method', 25 %><br>
+    <%= submit_tag 'REVIEW PURCHASE' %>
+<% end %>
