@@ -1,6 +1,8 @@
 class Customer < ApplicationRecord
     has_secure_password
 
+    has_many :addresses
+    has_many :credit_cards
     has_many :purchases
     has_many :cards, through: :purchases
     has_many :trades, through: :purchases

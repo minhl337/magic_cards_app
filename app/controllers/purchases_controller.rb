@@ -16,16 +16,18 @@ class PurchasesController < ApplicationController
 
     def set_payment
         create_payment_info
-        redirect_to shipping_methods_path
-    end
-
-    def shipping_methods
-    end
-
-    def set_shipping_method
+        # redirect_to shipping_methods_path
         create_shipping_method
         redirect_to review_purchase_path
     end
+
+    # def shipping_methods
+    # end
+
+    # def set_shipping_method
+    #     # create_shipping_method
+    #     # redirect_to review_purchase_path
+    # end
 
     def review_purchase
         set_checkout_info
