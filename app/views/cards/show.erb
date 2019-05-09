@@ -1,10 +1,3 @@
-<%= form_tag "/cards/#{@card.id}/add_to_cart" do %>
-    <%= select_tag :quantity, options_for_select(0..@card.quantity), prompt: "Select quntity" %>
-    <%= submit_tag 'Add to cart' %>
-    <%= submit_tag 'Check out now' %>
-<% end %>
-    
-
 
 
 

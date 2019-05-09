@@ -1,15 +1,13 @@
-<% if @alert %>
-    <p><%= @alert %></p>
-<% end %>
-<%= form_tag({:controller => "purchases", :action => "shipping"}, :method => "get") do %>
-        <%= submit_tag "CHECK OUT" %>
-    <% end %>
+
+
 
     
     
 <div class="container">
   
-
+<% if @alert %>
+    <p><%= @alert %></p>
+<% end %>
     
     <h1 class="mb-5">Your Cart</h1>
 

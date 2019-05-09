@@ -1,33 +1,11 @@
 
 
-    
-<h1>Shipping</h1>
-<%= form_tag 'set_shipping' do %>
-    <%= label_tag 'First Name' %>
-    <%= text_field_tag 'first_name', nil, :required => true %>
-    <%= label_tag 'Last Name' %>
-    <%= text_field_tag 'last_name', nil, :required => true %><br>
-    <%= label_tag 'Address' %>
-    <%= text_field_tag 'address', nil, :required => true %><br>
-    <%= label_tag 'City' %>
-    <%= text_field_tag 'city', nil, :required => true %>
-    <%= label_tag 'State' %>
-    <%= text_field_tag 'state', nil, :required => true %>
-    <%= label_tag 'Postal Code' %>
-    <%= text_field_tag 'postal_code', nil, :required => true %><br>
-    <%= label_tag 'Email' %>
-    <%= text_field_tag 'email', nil, :required => true %>
-    <%= label_tag 'Phone Number' %>
-    <%= text_field_tag 'phone_number', nil, :required => true %><br>
-    <%= submit_tag "Save & Continue" %>
-    
-<% end %>
 
 <div class="container col-md-6 col-sm-6 mx-auto">
 
 <h1>Shipping Information</h1>
 
-<%= bootstrap_form_for(set_shipping_path) do |f| %>
+<%= bootstrap_form_tag url: 'shipping' do |f| %>
   <%= f.text_field :first_name, placeholder: 'First Name'%>
   <%= f.text_field :last_name, placeholder: 'Last Name'%>
   <%= f.text_field :address, placeholder: 'Address'%>
