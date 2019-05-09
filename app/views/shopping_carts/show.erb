@@ -1,5 +1,6 @@
-
-
+<% if @alert %>
+    <p><%= @alert %></p>
+<% end %>
 <%= form_tag({:controller => "purchases", :action => "shipping"}, :method => "get") do %>
         <%= submit_tag "CHECK OUT" %>
     <% end %>

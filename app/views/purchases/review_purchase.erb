@@ -1,6 +1,3 @@
-<% if @alert %>
-    <p><%= @alert %></p>
-<% end %>
 <h1>Review Purchase</h1>
 <% @shopping_cart.uniq_cards_quantity_hash.each do |card, quantity| %>
     <%= image_tag card.small_pic_url %>

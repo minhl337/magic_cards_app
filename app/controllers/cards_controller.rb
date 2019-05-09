@@ -6,10 +6,12 @@ class CardsController < ApplicationController
     end
 
     def add_to_cart
-
-        quantity = params[:quantity].to_i if params[:quantity]
-        quantity.times do 
-            CardsShoppingCart.create(shopping_cart_id: current_customer.shopping_cart.id, card_id: @card.id)
+        
+        unless params[:quantity].blank?
+            quantity = params[:quantity].to_i 
+            quantity.times do 
+                CardsShoppingCart.create(shopping_cart_id: current_customer.shopping_cart.id, card_id: @card.id)
+            end
         end
         if params[:commit] == "Check out now"
             redirect_to shopping_cart_path(@customer.shopping_cart)

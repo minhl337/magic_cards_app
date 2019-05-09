@@ -1,5 +1,6 @@
 class PurchasesController < ApplicationController
 
+    before_action :check_stock, only: [:shipping, :confirm_checkout]
     skip_before_action :clear_private_info
 
     def shipping
@@ -32,16 +33,8 @@ class PurchasesController < ApplicationController
 
     ###Confirm check out button
     def confirm_checkout
-        #{card: quantity} hash in cart
-        card_quantity_hash = current_customer.shopping_cart.uniq_cards_quantity_hash
-        card_quantity_hash.each do |card, quantity_in_cart|
-            if card.quantity < quantity_in_cart
-                flash[:alert] = "#{card.name} has only #{card.quantity} in stock."
-                redirect_to review_purchase_path
-            end
-        end
         trade_id = Trade.create.id
-        card_quantity_hash.each do |card, quantity_in_cart|
+        @card_quantity_hash.each do |card, quantity_in_cart|
             card_left_after_sold = card.quantity - quantity_in_cart
             card.update(quantity: card_left_after_sold)
             quantity_in_cart.times do 
@@ -57,6 +50,18 @@ class PurchasesController < ApplicationController
     end
 
     private
+    def check_stock
+        @card_quantity_hash = @customer.shopping_cart.uniq_cards_quantity_hash
+        @card_quantity_hash.each do |card, quantity_in_cart|
+            if card.quantity < quantity_in_cart
+                flash[:alert] = "Card '#{card.name}' has only #{card.quantity} in stock."
+                @alert = flash[:alert]
+                # redirect_to shopping_cart_path(@customer.shopping_cart)
+                @shopping_cart = @customer.shopping_cart
+                render 'shopping_carts/show'
+            end
+        end
+    end 
     def create_address
         session[:first_name] = params[:first_name]
         session[:last_name] = params[:last_name]
