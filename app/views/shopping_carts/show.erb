@@ -1,7 +1,11 @@
 
 
+<%= form_tag({:controller => "purchases", :action => "shipping"}, :method => "get") do %>
+        <%= submit_tag "CHECK OUT" %>
+    <% end %>
 
-
+    
+    
 <div class="container">
     
     <h1 class="mb-5">Shopping Cart</h1>
@@ -36,14 +40,6 @@
         <%= hidden_field_tag 'card_id', card.id%>
         <%= select_tag :quantity, options_for_select(0..card.quantity), value: quantity, onchange: 'this.form.submit();', prompt: "#{quantity}" %>
     <% end %>
-<<<<<<< HEAD
-<% end %>
-    
-    <%= form_tag({:controller => "purchases", :action => "shipping"}, :method => "get") do %>
-        <%= submit_tag "CHECK OUT" %>
-    <% end %>
-
-=======
 </div>
       </div>
       
@@ -76,7 +72,6 @@
     <div class="col-md-auto" >
         
 <h3 style="position:fixed">Total: $<%= @shopping_cart.total_price %></h3>
->>>>>>> shopping_cart_navbar
 
     </div>
     <div class="col col-lg-2">
