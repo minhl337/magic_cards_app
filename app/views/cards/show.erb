@@ -18,7 +18,7 @@ In-Stock: <%= @card.quantity %>
 
 
 <%= form_tag "/cards/#{@card.id}/add_to_cart" do %>
-    <%= select_tag :quantity, options_for_select(0..@card.quantity), prompt: "Select quntity" %>
+    <%= select_tag :quantity, options_for_select(0..@card.quantity), prompt: "Select quantity" %>
     <%= submit_tag("Add to cart", :id=>"button", :class=>"btn btn-secondary", :name=>"commit") %>
   <%end%>
 
