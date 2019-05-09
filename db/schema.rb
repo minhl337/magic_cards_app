@@ -14,6 +14,14 @@ ActiveRecord::Schema.define(version: 2019_05_09_163355) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "customer_id"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.integer "postal_code"
+    t.string "email"
+    t.string "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -39,6 +47,10 @@ ActiveRecord::Schema.define(version: 2019_05_09_163355) do
 
   create_table "credit_cards", force: :cascade do |t|
     t.integer "customer_id"
+    t.string "full_name"
+    t.string "card_number"
+    t.string "expiration_date"
+    t.string "security_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
