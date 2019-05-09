@@ -8,5 +8,15 @@
     <%= text_field_tag 'expiration_date', nil, placeholder: 'MM/YY', :required => true %>
     <%= label_tag 'Security Code' %>
     <%= text_field_tag 'security_code', nil, placeholder: 'XXX', :required => true %><br>
-    <%= submit_tag "Choose Shipping Method" %>
+
+
+<h1>choose shipping</h1>
+
+    <%= label_tag "Standard, FREE" %>
+    <%= radio_button_tag 'shipping_method', 0 %><br>
+    <%= label_tag "Two Day,  $15.00" %>
+    <%= radio_button_tag 'shipping_method', 15 %><br>
+    <%= label_tag "Next Day, $25.00" %>
+    <%= radio_button_tag 'shipping_method', 25 %><br>
+    <%= submit_tag 'REVIEW PURCHASE' %>
 <% end %>

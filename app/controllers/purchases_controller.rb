@@ -15,16 +15,17 @@ class PurchasesController < ApplicationController
 
     def set_payment
         create_payment_info
-        redirect_to shipping_methods_path
-    end
-
-    def shipping_methods
-    end
-
-    def set_shipping_method
         create_shipping_method
         redirect_to review_purchase_path
     end
+
+    # def shipping_methods
+    # end
+
+    # def set_shipping_method
+    #     create_shipping_method
+    #     redirect_to review_purchase_path
+    # end
 
     def review_purchase
         set_checkout_info
@@ -57,6 +58,26 @@ class PurchasesController < ApplicationController
     end
 
     private
+    
+    def full_info
+        session[:first_name] = params[:first_name]
+        session[:last_name] = params[:last_name]
+        session[:address] = params[:address]
+        session[:city] = params[:city]
+        session[:state] = params[:state]
+        session[:postal_code] = params[:postal_code]
+        session[:email] = params[:email]
+        session[:phone_number] = params[:phone_number]
+
+        session[:full_name] = params[:full_name]
+        session[:card_number] = params[:card_number]
+        session[:expiration_date] = params[:expiration_date]
+        session[:security_code] = params[:security_code]
+        
+        session[:shipping_method] = params[:shipping_method]
+    end
+    
+    
     def create_address
         session[:first_name] = params[:first_name]
         session[:last_name] = params[:last_name]
