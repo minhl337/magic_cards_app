@@ -1,6 +1,3 @@
-<% if @alert %>
-    <p><%= @alert %></p>
-<% end %>
 <h1>Review Purchase</h1>
 <% @shopping_cart.uniq_cards_quantity_hash.each do |card, quantity| %>
     <%= image_tag card.small_pic_url %>
@@ -15,10 +12,13 @@
 <p>Postal Code: <%= @address_info[:postal_code] %></p>
 <p>Email: <%= @address_info[:email] %></p>
 <p>Phone Number: <%= @address_info[:phone_number] %></p>
+<h1>Shipping Method</h1>
+<p>Shipping Cost: $<%= @shipping_method %></p>
 <h1>Card Information</h1>
 <p>Name on card: <%= @payment_info[:full_name] %></p>
 <p>Card Number: <%= @payment_info[:card_number] %></p>
 <p>Expiration Date: <%= @payment_info[:expiration_date] %></p>
+
 
 <%= form_tag({:controller => "purchases", :action => "confirm_checkout"}, :method => "post") do %>
     <%= submit_tag "CONFIRM" %>

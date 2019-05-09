@@ -3,11 +3,9 @@ class StoreController < ApplicationController
     skip_before_action :authenticated?
 
     def home
-        @store = Store.new
-        if current_customer
-            @customer = current_customer
-        end
-        @cards = Card.search(params[:search])
+        
+        @all_sets = Card.all_sets
+        @cards = Card.search(params[:search], find_sets)
     end
 
     def login 
@@ -40,5 +38,13 @@ class StoreController < ApplicationController
     def store_params
         params.require(:store).permit(:search)
     end
-    
+
+    def find_sets
+        
+        sets = params.values.select do |value|
+            Card.all_sets.include?(value)
+        end
+        return nil if sets.empty?
+        sets
+    end
 end

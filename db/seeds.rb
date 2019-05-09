@@ -5,20 +5,23 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
-response = RestClient.get('https://api.scryfall.com/cards/search?order=set&q=e%3Ahou&unique=prints')
-data = JSON.parse(response)
-cards_hash = data['data']
-cards_hash.each do |card|
-    Card.create(
-        name: card['name'],
-        set_name: card['set_name'],
-        collector_number: card['collector_number'],
-        small_pic_url: card['image_uris']['small'],
-        normal_pic_url: card['image_uris']['normal'],
-        price: card['usd']
-    )
+def create_cards(api_url)
+    response = RestClient.get(api_url)
+    data = JSON.parse(response)
+    cards_hash = data['data']
+    cards_hash.each do |card|
+        Card.create(
+            name: card['name'],
+            set_name: card['set_name'],
+            collector_number: card['collector_number'],
+            small_pic_url: card['image_uris']['small'],
+            normal_pic_url: card['image_uris']['normal'],
+            price: card['usd']
+        )
+    end
 end
+create_cards('https://api.scryfall.com/cards/search?order=set&q=e%3Ahou&unique=prints')
+create_cards('https://api.scryfall.com/cards/search?order=set&q=e%3Auma&unique=prints')
 
 store = Store.create(name: 'magic card store')
 
