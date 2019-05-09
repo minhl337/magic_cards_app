@@ -10,6 +10,9 @@
         
     <form action="/" method="get" class="form-inline my-2 my-lg-0">
         <input name="utf8" type="hidden" value="✓">
+        <% @all_sets.each do |set| %>
+            <input type="checkbox" name=<%=set%> value="<%=set%>"><%= set %><br>
+        <% end %>
         <input class="form-control mr-sm-2" type="text" name="search" id="search" value="" placeholder="Card Name" aria-label="Search">
         <input class="btn btn btn-outline-primary my-2 my-sm-0" type="submit" name="commit" value="Search" data-disable-with="Search">
     </form>
@@ -23,7 +26,9 @@
 
 <div class="container">
 <div class="row text-center" style="display:flex; flex-wrap:wrap;">
-
+<% if @cards.blank? %>
+    <h1>Not Found</h1>
+<% else %>
 <% @cards.each do |c| %>
     <div class="col-md-4 col-sm-6 mx-0">
         <div class="thumbnail">
@@ -37,6 +42,9 @@
         </div>
     </div>
 <% end %> 
+
+<% end %>
+
 </div>
 </div>
 
