@@ -38,7 +38,7 @@
     </div>  
     
     <div class="col-2">
-      <div class="mr-0">
+      <div class="mr-0">Quantity: 
           <%= form_for @shopping_cart do |f| %>
         <%= hidden_field_tag 'card_id', card.id%>
         <%= select_tag :quantity, options_for_select(0..card.quantity), value: quantity, onchange: 'this.form.submit();', prompt: "#{quantity}" %>
@@ -53,8 +53,8 @@
 
     <div id=<%="collapse#{x}"%> class="collapse" aria-labelledby=<%="heading#{x}"%> data-parent="#accordion">
       <div class="card-body">
+          <a href=<%="/cards/#{card.id}"%> ><%= image_tag card.small_pic_url %></a>
           
-          <%= image_tag card.small_pic_url %>
           
       </div>
     </div>

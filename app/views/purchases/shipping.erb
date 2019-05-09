@@ -1,3 +1,6 @@
+
+
+    
 <h1>Shipping</h1>
 <%= form_tag 'set_shipping' do %>
     <%= label_tag 'First Name' %>
@@ -19,5 +22,24 @@
     <%= submit_tag "Save & Continue" %>
     
 <% end %>
-    
+
+<div class="container col-md-6 col-sm-6 mx-auto">
+
+<h1>Shipping Information</h1>
+
+<%= bootstrap_form_for(set_shipping_path) do |f| %>
+  <%= f.text_field :first_name, placeholder: 'First Name'%>
+  <%= f.text_field :last_name, placeholder: 'Last Name'%>
+  <%= f.text_field :address, placeholder: 'Address'%>
+  <%= f.text_field :city, placeholder: 'City'%>
+  <%= f.text_field :state, placeholder: 'State'%>
+  <%= f.text_field :postal_code, placeholder: 'Postal Code'%>
+  <%= f.text_field :email, placeholder: 'Email'%>
+  <%= f.text_field :phone_number, placeholder: 'Phone Number'%>
+  
+  
+  
+  <%= f.submit "Save and go to Payment"%>
+<% end %>
+
 

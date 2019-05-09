@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   #Purchase Routes
   get 'shopping_carts/purchases/shipping', to: 'purchases#shipping', as: 'shipping'
-  post 'shopping_carts/purchases/set_shipping', to: 'purchases#set_shipping'
+  post 'shopping_carts/purchases/shipping', to: 'purchases#set_shipping', as: 'set_shipping'
   get 'shopping_carts/purchases/payment', to: 'purchases#payment', as: 'payment'
   post 'shopping_carts/purchases/set_payment', to: 'purchases#set_payment'
   get 'shopping_carts/purchases/shipping_methods', to: 'purchases#shipping_methods', as: 'shipping_methods'

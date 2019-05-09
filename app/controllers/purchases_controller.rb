@@ -16,7 +16,10 @@ class PurchasesController < ApplicationController
 
     def set_payment
         create_payment_info
+<<<<<<< HEAD
         # redirect_to shipping_methods_path
+=======
+>>>>>>> shipping_combine
         create_shipping_method
         redirect_to review_purchase_path
     end
@@ -25,8 +28,13 @@ class PurchasesController < ApplicationController
     # end
 
     # def set_shipping_method
+<<<<<<< HEAD
     #     # create_shipping_method
     #     # redirect_to review_purchase_path
+=======
+    #     create_shipping_method
+    #     redirect_to review_purchase_path
+>>>>>>> shipping_combine
     # end
 
     def review_purchase
@@ -52,6 +60,7 @@ class PurchasesController < ApplicationController
     end
 
     private
+<<<<<<< HEAD
     def check_stock
         @card_quantity_hash = @customer.shopping_cart.uniq_cards_quantity_hash
         @card_quantity_hash.each do |card, quantity_in_cart|
@@ -64,6 +73,28 @@ class PurchasesController < ApplicationController
             end
         end
     end 
+=======
+    
+    def full_info
+        session[:first_name] = params[:first_name]
+        session[:last_name] = params[:last_name]
+        session[:address] = params[:address]
+        session[:city] = params[:city]
+        session[:state] = params[:state]
+        session[:postal_code] = params[:postal_code]
+        session[:email] = params[:email]
+        session[:phone_number] = params[:phone_number]
+
+        session[:full_name] = params[:full_name]
+        session[:card_number] = params[:card_number]
+        session[:expiration_date] = params[:expiration_date]
+        session[:security_code] = params[:security_code]
+        
+        session[:shipping_method] = params[:shipping_method]
+    end
+    
+    
+>>>>>>> shipping_combine
     def create_address
         session[:first_name] = params[:first_name]
         session[:last_name] = params[:last_name]
