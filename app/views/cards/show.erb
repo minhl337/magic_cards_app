@@ -4,6 +4,10 @@
     <%= submit_tag 'Check out now' %>
 <% end %>
     
+
+
+
+
 <div class="container">
     
 
@@ -17,12 +21,13 @@
 <h5><b>Set Name:</b> <%= @card.set_name %></h5><br>
 <h5><b>Set Number:</b> <%= @card.collector_number %></h5><br> <hr >
 <h5><b>Price:</b> $<%= @card.price %></h5><br>
-Stock: <%= @card.quantity %>
+In-Stock: <%= @card.quantity %>
 
 
-<%= bootstrap_form_tag url: "/cards/#{@card.id}/add_to_cart" do |f| %>
-  <%= f.submit "Add to Cart"%>
-<% end %>
+<%= form_tag "/cards/#{@card.id}/add_to_cart" do %>
+    <%= select_tag :quantity, options_for_select(0..@card.quantity), prompt: "Select quntity" %>
+    <%= submit_tag("Add to cart", :id=>"button", :class=>"btn btn-secondary", :name=>"commit") %>
+  <%end%>
 
     </div>
   </div>
