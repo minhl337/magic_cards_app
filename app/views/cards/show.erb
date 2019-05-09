@@ -15,7 +15,7 @@
 <h5><b>Set Name:</b> <%= @card.set_name %></h5><br>
 <h5><b>Set Number:</b> <%= @card.collector_number %></h5><br> <hr >
 <h5><b>Price:</b> $<%= @card.price %></h5><br>
-Stock: <%= @card.quantity %>
+In-Stock: <%= @card.quantity %>
 
 
 <%= form_tag "/cards/#{@card.id}/add_to_cart" do %>

@@ -1,6 +1,11 @@
+
+
+
 <div class="container">
+  
+
     
-    <h1 class="mb-5">Shopping Cart</h1>
+    <h1 class="mb-5">Your Cart</h1>
 
 
 
@@ -62,11 +67,18 @@
 <!---->
     </div> 
     <div class="col-md-auto" >
-        
-<h3 style="position:fixed">Total: $<%= @shopping_cart.total_price %></h3>
+ 
+<h2>Total: $<%= @shopping_cart.total_price %>
+</h2><br>
+
+<%= form_tag({:controller => "purchases", :action => "shipping"}, :method => "get") do %>
+<%= submit_tag("CHECK OUT", :id=>"checkout-button", :class=>"btn btn-secondary", :name=>"commit")%>
+<% end %>
+
+
+
 
     </div>
-    <div class="col col-lg-2">
-    </div>
+
   </div>
 </div>
