@@ -43,8 +43,11 @@
 
 <div class="container">
 <div class="row text-center" style="display:flex; flex-wrap:wrap;">
+
 <% if @cards.blank? %>
-    <h1>Not Found</h1>
+<div class="container">
+    <h1>No cards found</h1>
+</div>
 <% else %>
 <% @cards.each do |c| %>
     <div class="col-md-4 col-sm-6 mx-0">

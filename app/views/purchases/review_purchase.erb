@@ -1,48 +1,4 @@
-<<<<<<< HEAD
-<h1>Review Purchase</h1>
 
-<% if flash[:error] %>
-<font color="red"><p><%= flash[:error] %></p></font>
-<% end %>
-
-
-
-<% @shopping_cart.uniq_cards_quantity_hash.each do |card, quantity| %>
-    <%= image_tag card.small_pic_url %>
-    <h3>Name: <%= card.name %>, Quantity: <%= quantity %></h3>
-<% end %>
-<a class="nav-link text-primary" href="/shopping_carts/1">EDIT CART</a>
-<h1>Shipping Information</h1>
-<p>First name: <%= session[:first_name] %></p>
-<p>Last name: <%= session[:last_name] %></p>
-<p>Address: <%= session[:address] %></p>
-<p>City: <%= session[:city] %></p>
-<p>State: <%= session[:state] %></p>
-<p>Postal Code: <%= session[:postal_code] %></p>
-<p>Email: <%= session[:email] %></p>
-<p>Phone Number: <%= session[:phone_number] %></p>
-
-<%= form_tag({:controller => "purchases", :action => "shipping"}, :method => "get") do %>
-<%= submit_tag("EDIT SHIPPING", :id=>"checkout-button", :class=>"btn btn-secondary", :name=>"commit")%>
-<% end %>
-
-
-<h1>Shipping Method</h1>
-
-<p>Shipping Cost: $<%= session[:shipping_method] %>    -<%= @shipping_days %></p>
-
-
-<h1>Card Information</h1>
-<p>Name on card: <%= session[:full_name] %></p>
-<p>Card Number: <%= session[:card_number] %></p>
-<p>Expiration Date: <%= session[:expiration_date] %></p>
-<%= form_tag({:controller => "purchases", :action => "payment"}, :method => "get") do %>
-<%= submit_tag "EDIT PAYMENT & SHIPPING METHOD"%>
-<% end %>
-<h1>Total</h1>
-<p>$<%= @total %></p>
-
-=======
 
 <div class="container ">
     
@@ -51,14 +7,14 @@
 <h1 class="display-3">Review Purchase</h1>
     </div>
     <div class="form-group text-primary text-right col-md-3 mx-auto my-auto">
-<h2>Total: $<%= @shopping_cart.total_price %></h2>
+<h2>Total: $<%= @total %></h2>
     </div>
   </div>
     
 
 
 <!--cards show----------------------------------------------->
-<div id="accordion">
+<div id="accordion" class="mb-3">
 
     
 <%x=1%>
@@ -103,49 +59,72 @@
   
 <%x += 1%>
 <% end %>  
-  
 
-  
-  
-  
-  
 </div>
 
 
+ <!---->
+ 
+ 
+<form action="/shopping_carts/1" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
+<input type="submit" name="commit" value="EDIT CART" class="btn btn-secondary" data-disable-with="EDIT CART">
+</form><br>
+ 
 
+<!---->
 
 <!--cards show----------------------------------------------->
 
 
-
+ <div class="form-row">
+    <div class="form-group col-md-7">
+        
 <h1 class="display-4">Shipping Information</h1>
 
-<p>First name: <%= @address_info[:first_name] %></p>
-<p>Last name: <%= @address_info[:last_name] %></p>
-<p>Address: <%= @address_info[:address] %></p>
-<p>City: <%= @address_info[:city] %></p>
-<p>State: <%= @address_info[:state] %></p>
-<p>Postal Code: <%= @address_info[:postal_code] %></p>
-<p>Email: <%= @address_info[:email] %></p>
-<p>Phone Number: <%= @address_info[:phone_number] %></p>
+<p>First name: <%= session[:first_name] %></p>
+<p>Last name: <%= session[:last_name] %></p>
+<p>Address: <%= session[:address] %></p>
+<p>City: <%= session[:city] %></p>
+<p>State: <%= session[:state] %></p>
+<p>Postal Code: <%= session[:postal_code] %></p>
+<p>Email: <%= session[:email] %></p>
+<p>Phone Number: <%= session[:phone_number] %></p>
 
+<%= form_tag({:controller => "purchases", :action => "shipping"}, :method => "get") do %>
+<%= submit_tag("EDIT SHIPPING", :id=>"checkout-button", :class=>"btn btn-secondary", :name=>"commit")%>
+<% end %>
 
+    </div>
+    <div class="col-md-5">
+        
 <h1 class="display-4">Shipping Method</h1>
 
-<p>Shipping Cost: $<%= @shipping_method %></p>
+<p>Shipping Cost: $<%= session[:shipping_method] %></p>
 
 
 <h1 class="display-4">Card Information</h1>
 
-<p>Name on card: <%= @payment_info[:full_name] %></p>
-<p>Card Number: <%= @payment_info[:card_number] %></p>
-<p>Expiration Date: <%= @payment_info[:expiration_date] %></p>
+<p>Name on card: <%= session[:full_name] %></p>
+<p>Card Number: <%= session[:card_number] %></p>
+<p>Expiration Date: <%= session[:expiration_date] %></p>
 
-<div class="float-right">
->>>>>>> payment_and_review_touchup
+<%= form_tag({:controller => "purchases", :action => "payment"}, :method => "get") do %>
+<%= submit_tag("EDIT PAYMENT & SHIPPING METHOD", :id=>"review-button", :class=>"btn btn-secondary", :name=>"commit")%>  
+<% end %>
+<br>
+<div class="">
+
 <%= form_tag({:controller => "purchases", :action => "confirm_checkout"}, :method => "post") do %>
-    <%= submit_tag("Confirm", :id=>"button", :class=>"btn btn-primary btn-lg mb-5", :name=>"commit")%>
+    <%= submit_tag("Confirm", :id=>"button", :class=>"btn btn-primary btn-lg mt-3", :name=>"commit")%>
 <% end %>
 </div>
 
-</div>
+
+
+
+    </div>
+  </div>
+
+
+
+

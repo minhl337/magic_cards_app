@@ -43,5 +43,6 @@ class ApplicationController < ActionController::Base
         session[:card_number] = nil
         session[:expiration_date] = nil
         session[:shipping_method] = nil
+        session[:security_code] = nil
     end
 end
