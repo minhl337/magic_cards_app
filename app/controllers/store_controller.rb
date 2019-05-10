@@ -9,7 +9,6 @@ class StoreController < ApplicationController
 
     def login 
         redirect_to root_path if login?
-        @alert = flash[:alert] if flash[:alert]
     end
 
     def check_login
@@ -20,7 +19,7 @@ class StoreController < ApplicationController
             shove_cards_from_guest_to_user_account
             redirect_to root_path
         else
-            flash[:alert] = 'Username or Password is incorrect'
+            flash[:error] = 'Username or Password is incorrect'
             redirect_to store_login_path
         end
     end

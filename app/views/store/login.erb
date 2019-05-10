@@ -5,8 +5,8 @@
 <div class="container col-md-6 col-sm-6 mx-auto">
     
     <h1>Welcome back</h1>
-<% if @alert %>
-    <p><%= @alert %></p>
+<% if flash[:error] %>
+<font color="red"><p><%= flash[:error] %></p></font>
 <% end %>
     
 <%= bootstrap_form_tag url: '/store' do |f| %>
