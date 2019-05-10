@@ -1,5 +1,7 @@
-<h1>Thanks for shopping with us!</h1>
+<div class="container">
+    <h1>Thanks for shopping with us!</h1>
 
 <%= form_tag({:controller => "store", :action => "home"}, :method => "get") do %>
-    <%= submit_tag "Look for more cards" %>
+    <%= submit_tag("Look for More Cards", :id=>"button", :class=>"btn btn-primary", :name=>"commit") %>
 <% end %>
+</div>
