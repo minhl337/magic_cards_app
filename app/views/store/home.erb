@@ -7,17 +7,34 @@
     <p>Your Magic: The Gathering headquarters.</p>
     <p>
         
-        
     <form action="/" method="get" class="form-inline my-2 my-lg-0">
         <input name="utf8" type="hidden" value="✓">
+        
+<div class="dropdown mr-2">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Select Set
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      
+      
         <% @all_sets.each do |set| %>
-            <input type="checkbox" name=<%=set%> value="<%=set%>"><%= set %><br>
+            <div class="mx-2 ">
+                <input type="checkbox" name=<%=set%> value="<%=set%>"><%= set %><br>
+            </div>
         <% end %>
+      
+  </div>
+</div>        
+
+
+        
         <input class="form-control mr-sm-2" type="text" name="search" id="search" value="" placeholder="Card Name" aria-label="Search">
         <input class="btn btn btn-outline-primary my-2 my-sm-0" type="submit" name="commit" value="Search" data-disable-with="Search">
+        <br>
     </form>
-        
-        
+
+
+
     </p>
     </div>
 </header>

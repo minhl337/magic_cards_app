@@ -1,9 +1,80 @@
-<h1>Review Purchase</h1>
+
+<div class="container ">
+    
+ <div class="form-row">
+    <div class="form-group col-md-9">
+<h1 class="display-3">Review Purchase</h1>
+    </div>
+    <div class="form-group text-primary text-right col-md-3 mx-auto my-auto">
+<h2>Total: $<%= @shopping_cart.total_price %></h2>
+    </div>
+  </div>
+    
+
+
+<!--cards show----------------------------------------------->
+<div id="accordion">
+
+    
+<%x=1%>
+
 <% @shopping_cart.uniq_cards_quantity_hash.each do |card, quantity| %>
-    <%= image_tag card.small_pic_url %>
-    <h3>Name: <%= card.name %>, Quantity: <%= quantity %></h3>
-<% end %>
-<h1>Shipping Information</h1>
+
+
+
+  <div class="card">
+    <div class="card-header" id=<%="heading#{x}"%>>
+        
+   <div class="row">     
+   <div class="col-10">     
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target=<%="#collapse#{x}"%> aria-expanded="false" aria-controls=<%="collapse#{x}"%>>
+<h3><%= card.name %></h3>
+        </button>
+      </h5>
+    </div>  
+    
+    <div class="col-2">
+        
+        <h4 class="display-6">Quantity: <%= quantity %></h4>
+    </div>  
+    
+    
+    
+    </div>  
+      
+      
+      
+    </div>
+
+    <div id=<%="collapse#{x}"%> class="collapse" aria-labelledby=<%="heading#{x}"%> data-parent="#accordion">
+      <div class="card-body">
+          <a href=<%="/cards/#{card.id}"%> ><%= image_tag card.small_pic_url %></a>
+          
+          
+      </div>
+    </div>
+  </div>
+  
+<%x += 1%>
+<% end %>  
+  
+
+  
+  
+  
+  
+</div>
+
+
+
+
+<!--cards show----------------------------------------------->
+
+
+
+<h1 class="display-4">Shipping Information</h1>
+
 <p>First name: <%= @address_info[:first_name] %></p>
 <p>Last name: <%= @address_info[:last_name] %></p>
 <p>Address: <%= @address_info[:address] %></p>
@@ -12,16 +83,23 @@
 <p>Postal Code: <%= @address_info[:postal_code] %></p>
 <p>Email: <%= @address_info[:email] %></p>
 <p>Phone Number: <%= @address_info[:phone_number] %></p>
-<h1>Shipping Method</h1>
+
+
+<h1 class="display-4">Shipping Method</h1>
+
 <p>Shipping Cost: $<%= @shipping_method %></p>
-<h1>Card Information</h1>
+
+
+<h1 class="display-4">Card Information</h1>
+
 <p>Name on card: <%= @payment_info[:full_name] %></p>
 <p>Card Number: <%= @payment_info[:card_number] %></p>
 <p>Expiration Date: <%= @payment_info[:expiration_date] %></p>
 
-
+<div class="float-right">
 <%= form_tag({:controller => "purchases", :action => "confirm_checkout"}, :method => "post") do %>
-    <%= submit_tag "CONFIRM" %>
+    <%= submit_tag("Confirm", :id=>"button", :class=>"btn btn-primary btn-lg mb-5", :name=>"commit")%>
 <% end %>
+</div>
 
-
+</div>

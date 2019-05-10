@@ -5,19 +5,43 @@
 
 <h1>Shipping Information</h1>
 
-<%= bootstrap_form_tag url: 'shipping' do |f| %>
-  <%= f.text_field :first_name, placeholder: 'First Name'%>
-  <%= f.text_field :last_name, placeholder: 'Last Name'%>
-  <%= f.text_field :address, placeholder: 'Address'%>
-  <%= f.text_field :city, placeholder: 'City'%>
-  <%= f.text_field :state, placeholder: 'State'%>
-  <%= f.text_field :postal_code, placeholder: 'Postal Code'%>
-  <%= f.text_field :email, placeholder: 'Email'%>
-  <%= f.text_field :phone_number, placeholder: 'Phone Number'%>
-  
-  
-  
-  <%= f.submit "Save and go to Payment"%>
-<% end %>
 
+
+
+<%= bootstrap_form_tag url: 'shipping' do |f| %>
+<form>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+  <%= f.text_field :first_name, placeholder: 'First Name'%>
+    </div>
+    <div class="form-group col-md-6">
+  <%= f.text_field :last_name, placeholder: 'Last Name'%>
+    </div>
+  </div>
+  <div class="form-group">
+  <%= f.text_field :address, placeholder: 'Address'%>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+  <%= f.text_field :city, placeholder: 'City'%>
+    </div>
+    <div class="form-group col-md-4">
+  <%= f.text_field :state, placeholder: 'State'%>
+    </div>
+    <div class="form-group col-md-2">
+ <%= f.text_field :postal_code, placeholder: 'Zip Code'%>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+  <%= f.text_field :email, placeholder: 'Email'%>
+    </div>
+    <div class="form-group col-md-6">
+  <%= f.text_field :phone_number, placeholder: 'Phone Number'%>
+    </div>
+  </div>
+  <%= f.submit "Save and go to Payment"%>
+</form>
+
+<% end %>
 
