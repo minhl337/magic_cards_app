@@ -59,16 +59,15 @@
 
     <ul class="nav navbar-nav navbar-right navbar-dark bg-dark">
       <li>
-        <% if @customer %>
+
         <a class="nav-link text-primary" href="/shopping_carts/1">Check Cart</a>
-     
-        <% end %>
+    
       </li>
       
       <li class="nav-item">
-        <% if @customer %>
-        <span class="badge badge-light"><%= @customer.shopping_cart.cards.count%></span>
-        <% end %>
+      
+        <span class="badge badge-light"><%= @shopping_cart.cards.count%></span>
+
       </li>
   
       

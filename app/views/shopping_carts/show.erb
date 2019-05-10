@@ -1,17 +1,13 @@
 
-
-
-    
-    
 <div class="container">
   
-<% if @alert %>
-    <p><%= @alert %></p>
-<% end %>
+
     
     <h1 class="mb-5">Your Cart</h1>
 
-
+<% if flash[:error] %>
+    <font color="red"><p><%= flash[:error] %></p></font>    
+<% end %>
 
   <div class="row">
     <div class="col">
@@ -72,10 +68,10 @@
     </div> 
     <div class="col-md-auto" >
  
-<h2>Total: $<%= @shopping_cart.total_price %>
+<h2>Total: $<%= @total %>
 </h2><br>
 
-<%= form_tag({:controller => "purchases", :action => "shipping"}, :method => "get") do %>
+<%= form_tag('/shopping_carts/:id/check_cart') do %>
 <%= submit_tag("CHECK OUT", :id=>"checkout-button", :class=>"btn btn-secondary", :name=>"commit")%>
 <% end %>
 

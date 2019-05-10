@@ -1,15 +1,12 @@
 class CustomersController < ApplicationController
 
     skip_before_action :authenticated?, only: [:new, :create, :customer_params]
-
     def show
 
     end
 
     def new
-        if flash[:error]
-            @error = flash[:error].first
-        end
+        redirect_to root_path if login?
     end
 
     def create
@@ -18,7 +15,7 @@ class CustomersController < ApplicationController
             session[:user_id] = @customer.id
             redirect_to root_path
         else 
-            flash[:error] = @customer.errors.full_messages
+            flash[:error] = @customer.errors.full_messages.first
             redirect_to new_customer_path
         end
     end

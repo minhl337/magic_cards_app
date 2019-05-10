@@ -6,11 +6,15 @@ Rails.application.routes.draw do
   get 'store/login', to: 'store#login'
   post 'store/logout', to: 'store#logout', as: 'logout'
   post 'store', to: 'store#check_login'
-  resources :cards, only: [:show]
-  resources :shopping_carts, only: [:show, :update]
+  
+  
   resources :customers, only: [:new, :create]
+  #Shopping Cart Routes
+  resources :shopping_carts, only: [:show, :update, :check_cart]
+  post 'shopping_carts/:id/check_cart', to: 'shopping_carts#check_cart'
 
   #Card Routes
+  resources :cards, only: [:show]
   post 'cards/:id/add_to_cart', to: 'cards#add_to_cart'
 
   #Purchase Routes

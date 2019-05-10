@@ -1,23 +1,19 @@
 class CardsController < ApplicationController
 
     before_action :set_card
-    skip_before_action :authenticated?, only: [:show, :set_card]
+    skip_before_action :authenticated?
+
     def show
     end
 
     def add_to_cart
-        
         unless params[:quantity].blank?
             quantity = params[:quantity].to_i 
             quantity.times do 
-                CardsShoppingCart.create(shopping_cart_id: current_customer.shopping_cart.id, card_id: @card.id)
+                CardsShoppingCart.create(shopping_cart_id: @shopping_cart.id, card_id: @card.id)
             end
         end
-        if params[:commit] == "Check out now"
-            redirect_to shopping_cart_path(@customer.shopping_cart)
-        else
-            redirect_to @card
-        end
+        redirect_to @card
     end
 
     private

@@ -1,21 +1,48 @@
-<h1>Payment</h1>
-<%= form_tag 'set_payment' do %>
-    <%= label_tag 'Full Name' %>
-    <%= text_field_tag 'full_name', nil, placeholder: 'Full Name', :required => true %>
-    <%= label_tag 'Card Number' %>
-    <%= text_field_tag 'card_number', nil, size: 25, placeholder: 'Bank Account Number', :required => true %><br>
-    <%= label_tag 'Expiration Date' %>
-    <%= text_field_tag 'expiration_date', nil, placeholder: 'MM/YY', :required => true %>
-    <%= label_tag 'Security Code' %>
-    <%= text_field_tag 'security_code', nil, placeholder: 'XXX', :required => true %><br>
 
-    <h1>Shipping Method</h1>
+<div class="container col-md-6 col-sm-6 mx-auto">
 
-    <%= label_tag "Standard, FREE" %>
-    <%= radio_button_tag 'shipping_method', 0 %><br>
-    <%= label_tag "Two Day,  $15.00" %>
-    <%= radio_button_tag 'shipping_method', 15 %><br>
-    <%= label_tag "Next Day, $25.00" %>
-    <%= radio_button_tag 'shipping_method', 25 %><br>
-    <%= submit_tag 'REVIEW PURCHASE' %>
+<h1>Payment and Shipping</h1>
+<% if flash[:error] %>
+  <font color="red"><p><%= flash[:error] %></p></font>
 <% end %>
+<%= bootstrap_form_tag url: '/shopping_carts/purchases/set_payment' do |f| %>
+<form>
+    
+
+  <div class="form-row">
+    <div class="form-group col-md-10">
+      <%= f.text_field :full_name, value: session[:full_name] %>
+    </div>
+    <div class="form-group col-md-2">
+      <%= f.text_field :security_code, value: session[:security_code] %>
+    </div>
+  </div>
+
+
+    <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= f.text_field :card_number, value: session[:card_number] %>
+    </div>
+    <div class="form-group col-md-6">
+      <%= f.text_field :expiration_date, value: session[:expiration_date] %>
+    </div>
+  </div>
+ 
+  <h3>Shipping Method:</h3>
+
+    <%= f.radio_button :shipping_method, 0, label: "Standard: FREE", checked: session[:shipping_method] == '0' %>
+    <%= f.radio_button :shipping_method, 15, label: "Two Day: $15.00", checked: session[:shipping_method] == '15' %>
+    <%= f.radio_button :shipping_method, 25, label: "Next Day: $25.00", checked: session[:shipping_method] == '25' %><br>
+    <%= f.submit 'Review Purchase' %>
+  
+<form>
+  
+  
+<% end %>  
+
+
+
+
+
+
+</div>

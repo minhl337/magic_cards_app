@@ -2,7 +2,9 @@
 
 <h1>Create Account</h1>
 
-<p><%= @error %></p>
+<% if flash[:error] %>
+<font color="red"><p><%= flash[:error] %></p></font>
+<% end %>
 
 <%= bootstrap_form_tag url: '/customers' do |f| %>
   <%= f.text_field :username, placeholder: 'Username'%>

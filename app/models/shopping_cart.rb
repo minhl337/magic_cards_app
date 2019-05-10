@@ -1,6 +1,6 @@
 class ShoppingCart < ApplicationRecord
 
-    belongs_to :customer
+    belongs_to :customer, optional: true
     has_and_belongs_to_many :cards
 
 
@@ -34,5 +34,15 @@ class ShoppingCart < ApplicationRecord
         quantity.times do 
             CardsShoppingCart.create(card_id: card_id, shopping_cart_id: self.id)
         end
+    end
+
+    def out_of_stock
+        errors = []
+        self.uniq_cards_quantity_hash.each do |card, quantity_in_cart|
+            if card.quantity < quantity_in_cart
+                errors << "Card '#{card.name}' has only #{card.quantity} in stock." 
+            end
+        end
+        errors.empty? ? nil : errors
     end
 end

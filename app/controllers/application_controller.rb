@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-    before_action :authenticated?, :current_customer, :clear_private_info
+    before_action :authenticated?, :current_customer, :current_shopping_cart
 
     def current_customer
         if session[:user_id]
@@ -9,7 +9,16 @@ class ApplicationController < ActionController::Base
     end
 
     def current_shopping_cart
-        current_customer.shopping_cart
+        if login?
+            @shopping_cart = @customer.shopping_cart
+        else
+            if session[:shopping_cart]
+                @shopping_cart = ShoppingCart.find(session[:shopping_cart])
+            else
+                @shopping_cart = ShoppingCart.create
+                session[:shopping_cart] = @shopping_cart.id
+            end
+        end
     end
 
     def login?
@@ -21,6 +30,7 @@ class ApplicationController < ActionController::Base
     end
 
     def clear_private_info
+        session[:shopping_cart] = nil
         session[:first_name] = nil
         session[:last_name] = nil
         session[:address] = nil
@@ -32,7 +42,6 @@ class ApplicationController < ActionController::Base
         session[:full_name] = nil
         session[:card_number] = nil
         session[:expiration_date] = nil
-        session[:security_code] = nil
         session[:shipping_method] = nil
     end
 end
