@@ -12,7 +12,9 @@ class CustomersController < ApplicationController
     def create
         @customer = Customer.new(customer_attributes_hash)
         if @customer.save
+            clear_private_info
             session[:user_id] = @customer.id
+            shove_cards_from_guest_to_user_account
             redirect_to root_path
         else 
             flash[:error] = @customer.errors.full_messages.first
@@ -23,8 +25,5 @@ class CustomersController < ApplicationController
     private
     def customer_attributes_hash
         {username: params[:username], password: params[:password], password_confirmation: params[:password_confirmation]}
-    end
-    def customer_params
-        params.require(:customer).permit(:username, :password, :password_confirmation)
     end
 end

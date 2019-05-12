@@ -30,7 +30,6 @@ class ApplicationController < ActionController::Base
     end
 
     def clear_private_info
-        session[:shopping_cart] = nil
         session[:first_name] = nil
         session[:last_name] = nil
         session[:address] = nil
@@ -44,5 +43,14 @@ class ApplicationController < ActionController::Base
         session[:expiration_date] = nil
         session[:shipping_method] = nil
         session[:security_code] = nil
+    end
+
+    def shove_cards_from_guest_to_user_account
+        if session[:shopping_cart]
+            guest_cart = ShoppingCart.find(session[:shopping_cart])
+            guest_cart.cards.each { |card| CardsShoppingCart.create(shopping_cart_id: current_shopping_cart.id, card_id: card.id)}
+            guest_cart.destroy
+            session[:shopping_cart] = nil
+        end
     end
 end
