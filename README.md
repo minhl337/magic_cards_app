@@ -16,3 +16,5 @@ rails db:seed
 rails s
 ```
 3) Go to your local host at port 3000 to check out the application.
+
+Video of running app: https://youtu.be/txNbcNS_8do
